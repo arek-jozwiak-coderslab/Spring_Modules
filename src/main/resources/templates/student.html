@@ -1,0 +1,14 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<section layout:fragment="content">
+	<a th:href="@{/panel/{f}/user(f=${student.firstName})}">Panel</a>
+
+	<p th:text="#{app.hello.message}">Witamy w aplikacji - konto do
+		przelewu..</p>
+	<p th:text="asdasd">12312312312312</p>
+	<h1 th:text="${message}"></h1>
+	<p th:text="${message}" />
+	<span th:text="${message}"></span>
+</section>
+</html>
