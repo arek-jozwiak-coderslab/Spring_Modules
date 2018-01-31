@@ -472,7 +472,10 @@
             </div>
             <!-- /.row -->
             <div class="row">
-
+                    <th:block th:if="${message != null}">
+                        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=${message.message})">
+                            &nbsp;</div>
+                    </th:block>
 
 	<section layout:fragment="content">
 			buźka

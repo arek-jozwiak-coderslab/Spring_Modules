@@ -28,12 +28,9 @@
                 <td th:text="${group.firstName}"></td>
                 <td th:text="${group.id}"></td>
                 <td>
-                    <!--<a th:href="@{/group-exam/{id}/list/(id=${group.id})}" class="btn btn-primary btn-xs"><i-->
-                            <!--class="fa fa-folder"></i> Exam </a>-->
-                    <a class="btn btn-primary btn-xs"><i
-                            class="fa fa-folder"></i> Repos </a>
-                    <a  class="btn btn-primary btn-xs"><i
-                            class="fa fa-folder"></i> Students </a>
+                   <a th:href="@{/student/remove}" class="btn btn-primary btn-xs">
+                   <i class="fa fa-folder"></i> Remove student </a>
+                   
                 </td>
             </tr>
             </tbody>
