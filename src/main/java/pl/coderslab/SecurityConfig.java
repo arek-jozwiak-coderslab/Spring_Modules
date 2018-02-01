@@ -28,15 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new SpringDataUserDetailsService();
 	}
 
-//	@Autowired
-//	DataSource dataSource;
-
-//	@Override
-//	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.jdbcAuthentication()
-//			.setUser
-//			.passwordEncoder(passwordEncoder());
-//	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
