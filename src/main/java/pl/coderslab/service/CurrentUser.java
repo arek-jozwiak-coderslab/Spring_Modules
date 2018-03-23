@@ -7,16 +7,16 @@ import org.springframework.security.core.userdetails.User;
 
 public class CurrentUser extends User {
 
-	private final long userID;
+	private final pl.coderslab.entity.User user;
 
 	public CurrentUser(String username, String password, Collection<? extends GrantedAuthority> authorities,
-			long userID) {
+			pl.coderslab.entity.User user) {
 		super(username, password, authorities);
-		this.userID = userID;
+		this.user = user;
 	}
 
-	public long getUserID() {
-		return userID;
+	public pl.coderslab.entity.User getUser() {
+		return user;
 	}
 	
 }

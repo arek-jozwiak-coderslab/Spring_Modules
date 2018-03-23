@@ -1,6 +1,5 @@
 package pl.coderslab.web;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static pl.coderslab.utils.MessageHelper.addSuccessAttribute;
 
 import org.slf4j.Logger;
