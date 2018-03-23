@@ -1,7 +1,5 @@
 package pl.coderslab.web;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-import static pl.coderslab.utils.MessageHelper.addSuccessAttribute;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import pl.coderslab.repository.StudentRepository;
+
+import static pl.coderslab.utils.MessageHelper.addSuccessAttribute;
 
 @Controller
 public class StudentController {
