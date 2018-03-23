@@ -1,7 +1,5 @@
 package pl.coderslab.web;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
+import pl.coderslab.entity.Book;
 import pl.coderslab.entity.Student;
 import pl.coderslab.entity.User;
+import pl.coderslab.repository.BookRepository;
 import pl.coderslab.service.CurrentUser;
 import pl.coderslab.service.UserService;
 
@@ -20,14 +20,28 @@ import pl.coderslab.service.UserService;
 public class HomeController {
 
 	private final UserService userService;
+	private final BookRepository bookRepository;
 
-	public HomeController(UserService userService) {
+	public HomeController(UserService userService, BookRepository bookRepository) {
 		this.userService = userService;
+		this.bookRepository = bookRepository;
 	}
+	@RequestMapping("/create-book")
+    @ResponseBody
+	public String createBook(@AuthenticationPrincipal CurrentUser customUser){
+	    Book b = new Book();
+	    b.setTitle("Some title");
+	    b.setOwner(customUser.getUser());
+	    bookRepository.save(b);
+        return "created";
+    }
 	@RequestMapping("/add-some")
 	@ResponseBody
 	public String addSomeWithuser() {
-		//get user id from logged user
+		User newUser = new User();
+		newUser.setUsername("admin");
+		newUser.setPassword("admin");
+		userService.saveAdmin(newUser);
 		return "add-some";
 	}
 
@@ -37,14 +51,14 @@ public class HomeController {
 		User u = new User();
 		u.setUsername("admin");
 		u.setPassword("admin");
-		userService.saveUser(u);
+		userService.saveAdmin(u);
 		return "add-user";
 	}
 
 	@GetMapping("/admin")
 	@ResponseBody
 	public String admin(@AuthenticationPrincipal CurrentUser customUser) {
-		return "admin id " + customUser.getUserID();
+		return "this is user " + customUser.getUser();
 	}
 
 	@RequestMapping("/")
